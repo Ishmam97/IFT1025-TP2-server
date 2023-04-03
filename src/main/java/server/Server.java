@@ -120,7 +120,21 @@ public class Server {
      */
     
     public void handleRegistration() {
-
+        try {
+            RegistrationForm form = (RegistrationForm) objectInputStream.readObject();
+            System.out.println("Received registration form from client");
+            System.out.println(form);
+            try (BufferedWriter bw = new BufferedWriter(new FileWriter("IFT1025-TP2-server/src/main/java/server/data/inscriptions.txt", true))) {
+                bw.write(form.toString());
+                bw.newLine();
+                bw.flush();
+            } catch (IOException e) {
+                System.err.println("Error writing to file: " + e.getMessage());
+            }
+            objectOutputStream.writeObject("Inscription réussie!");
+        } catch (IOException | ClassNotFoundException e) {
+            System.err.println("Error reading object from stream: " + e.getMessage());
+        }
     }
 }
 
