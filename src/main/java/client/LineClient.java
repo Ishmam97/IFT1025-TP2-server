@@ -152,5 +152,12 @@ public class LineClient {
         return matricule.length() == 6 && matricule.matches("[0-9]+");
     }
 
+    // Fonction en charge de vérifier que le email fourni est valide
+    public boolean verifyEmail(String email) {
+        return email.contains("@") && email.split("@")[1].contains(".") && email.split("@")[0].length() > 0 && email.split("@")[1].split("\\.")[0].length() > 0 && email.split("@")[1].split("\\.")[1].length() > 0;
+    }
 
+    // Fonction en charge de vérifier que le cours choisi correspond à la bonne
+    // session
+ 
 }
