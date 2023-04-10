@@ -148,5 +148,9 @@ public class LineClient {
         }
     }
     // function to verify whether the number has 6 digits and are all numbers
+    public boolean verifyMatricule(String matricule) {
+        return matricule.length() == 6 && matricule.matches("[0-9]+");
+    }
+
 
 }
